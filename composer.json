@@ -1,0 +1,30 @@
+{
+    "name": "bbldn/cqrs-laravel",
+    "description": "CQRS Laravel implementation",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "~8.1",
+        "bbldn/cqrs": "^0.1.0",
+        "illuminate/support": "^9.0",
+        "illuminate/contracts": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "BBLDN\\CQRSLaravel\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "bbldn05",
+            "email": "bobol.boris@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "BBLDN\\CQRSLaravel\\ServiceProvider"
+            ]
+        }
+    }
+}

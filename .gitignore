@@ -1,0 +1,5 @@
+/.idea
+/*.code-workspace
+
+/vendor
+/composer.lock
