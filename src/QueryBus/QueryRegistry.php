@@ -2,29 +2,21 @@
 
 namespace BBLDN\CQRSLaravel\QueryBus;
 
+use BBLDN\CQRS\QueryBus\Query;
+
 class QueryRegistry
 {
     /**
-     * @var string[]
-     *
-     * @psalm-var array<class-string, class-string>
+     * @param array<class-string<Query>, class-string> $queryClassMap
      */
-    private array $queryClassMap;
-
-    /**
-     * @param string[] $queryClassMap
-     *
-     * @psalm-param array<class-string, class-string> $queryClassMap
-     */
-    public function __construct(array $queryClassMap)
+    public function __construct(
+        private readonly array $queryClassMap
+    )
     {
-        $this->queryClassMap = $queryClassMap;
     }
 
     /**
-     * @return string[]
-     *
-     * @psalm-return array<class-string, class-string>
+     * @return array<class-string<Query>, class-string>
      */
     public function getAll(): array
     {
@@ -32,12 +24,10 @@ class QueryRegistry
     }
 
     /**
-     * @param string $queryClassName
+     * @param class-string $queryClassName
      * @return string|null
-     *
-     * @psalm-param class-string $queryClassName
      */
-    public function get(string $queryClassName): ?string
+    public function get(string $queryClassName): string|null
     {
         return $this->queryClassMap[$queryClassName] ?? null;
     }

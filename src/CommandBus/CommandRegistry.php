@@ -2,29 +2,21 @@
 
 namespace BBLDN\CQRSLaravel\CommandBus;
 
+use BBLDN\CQRS\CommandBus\Command;
+
 class CommandRegistry
 {
     /**
-     * @var string[]
-     *
-     * @psalm-var array<class-string, class-string>
+     * @param array<class-string<Command>, class-string> $commandClassMap
      */
-    private array $commandClassMap;
-
-    /**
-     * @param string[] $commandClassMap
-     *
-     * @psalm-param array<class-string, class-string> $commandClassMap
-     */
-    public function __construct(array $commandClassMap)
+    public function __construct(
+        private readonly array $commandClassMap
+    )
     {
-        $this->commandClassMap = $commandClassMap;
     }
 
     /**
-     * @return string[]
-     *
-     * @psalm-return array<class-string, class-string>
+     * @return array<class-string<Command>, class-string>
      */
     public function getAll(): array
     {
@@ -32,12 +24,10 @@ class CommandRegistry
     }
 
     /**
-     * @param string $commandClassName
+     * @param class-string $commandClassName
      * @return string|null
-     *
-     * @psalm-param class-string $commandClassName
      */
-    public function get(string $commandClassName): ?string
+    public function get(string $commandClassName): string|null
     {
         return $this->commandClassMap[$commandClassName] ?? null;
     }

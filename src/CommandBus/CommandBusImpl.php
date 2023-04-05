@@ -10,21 +10,15 @@ use Psr\Container\ContainerExceptionInterface;
 
 class CommandBusImpl implements CommandBus
 {
-    private Container $container;
-
-    private CommandRegistry $commandRegistry;
-
     /**
      * @param Container $container
      * @param CommandRegistry $commandRegistry
      */
     public function __construct(
-        Container $container,
-        CommandRegistry $commandRegistry
+        private readonly Container $container,
+        private readonly CommandRegistry $commandRegistry
     )
     {
-        $this->container = $container;
-        $this->commandRegistry = $commandRegistry;
     }
 
     /**

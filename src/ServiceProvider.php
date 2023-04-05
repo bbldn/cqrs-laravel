@@ -13,15 +13,16 @@ use Illuminate\Contracts\Container\Container as Application;
 
 class ServiceProvider extends Base
 {
+    /**
+     * @return void
+     */
     public function boot(): void
     {
         $this->publishes([__DIR__ . '/config/cqrs.php' => $this->app->configPath('cqrs.php')]);
     }
 
     /**
-     * @return string[]
-     *
-     * @psalm-return list<class-string>
+     * @return list<class-string>
      */
     public function provides(): array
     {

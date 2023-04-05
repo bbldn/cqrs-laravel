@@ -10,21 +10,15 @@ use Psr\Container\ContainerExceptionInterface;
 
 class QueryBusImpl implements QueryBus
 {
-    private Container $container;
-
-    private QueryRegistry $queryRegistry;
-
     /**
      * @param Container $container
      * @param QueryRegistry $queryRegistry
      */
     public function __construct(
-        Container $container,
-        QueryRegistry $queryRegistry
+        private readonly Container $container,
+        private readonly QueryRegistry $queryRegistry
     )
     {
-        $this->container = $container;
-        $this->queryRegistry = $queryRegistry;
     }
 
     /**
